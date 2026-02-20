@@ -1,6 +1,7 @@
 package com.einsatz.einsatz_backend.controller;
 
 import com.einsatz.einsatz_backend.dto.AuthResponseDTO;
+import com.einsatz.einsatz_backend.dto.LoginRequestDTO;
 import com.einsatz.einsatz_backend.dto.RegisterRequestDTO;
 import com.einsatz.einsatz_backend.service.AuthService;
 import jakarta.validation.Valid;
@@ -25,4 +26,10 @@ public class AuthController {
     ){
         return ResponseEntity.ok(authService.register(request));
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginRequestDTO loginRequest){
+        return ResponseEntity.ok(authService.login(loginRequest));
+    }
+
 }

@@ -13,6 +13,11 @@ interface AuthResponse{
     token: string;
 }
 
+interface loginRequest{
+    email:string;
+    password: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -24,5 +29,9 @@ export class AuthService{
 
     register(data: RegisterRequest): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data);
+    }
+
+    login(data:loginRequest):Observable<AuthResponse>{
+        return this.http.post<AuthResponse>(`${this.apiUrl}/login`,data);
     }
 }
