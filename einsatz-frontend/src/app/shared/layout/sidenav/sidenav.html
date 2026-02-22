@@ -1,0 +1,28 @@
+<mat-sidenav-container class="container">
+
+  <!-- Sidebar -->
+  <mat-sidenav #drawer mode="side" opened>
+    <div class="menu-title">Menu</div>
+
+    <button mat-button routerLink="/dashboard">Dashboard</button>
+    <button mat-button routerLink="/users">Users</button>
+    <button mat-button routerLink="/settings">Settings</button>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Einsatz</span>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
