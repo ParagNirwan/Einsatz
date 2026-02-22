@@ -8,7 +8,7 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,7 +42,7 @@ const passwordMatchValidator: ValidatorFn = (control: AbstractControl): Validati
 export class Register {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-
+  private router = inject(Router); 
   registerForm = this.fb.group(
     {
       firstName: ['', Validators.required],
@@ -63,6 +63,9 @@ export class Register {
       next: (response: any) => {
         console.log('Registration successful:', response);
         localStorage.setItem('authToken', response.token);
+
+        //redirect to dashboard
+         this.router.navigate(['/dashboard']); 
       },
       error: (err :any) => {
         console.error('Registration failed:', err);

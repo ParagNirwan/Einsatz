@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+}
+
+.menu-title {
+  padding: 16px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 16px;
+}

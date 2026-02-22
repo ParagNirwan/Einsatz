@@ -9,10 +9,18 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [MatCardModule, ReactiveFormsModule, MatButtonModule, MatInputModule,  CommonModule],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    CommonModule
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -20,26 +28,29 @@ export class Login {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private router = inject(Router);   // ✅ THIS WAS MISSING
 
   loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
-  })
+  });
 
   onSubmit() {
     if (this.loginForm.invalid) return;
+
     const loginData = this.loginForm.value as any;
 
     this.authService.login(loginData).subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         console.log('Login successful, token:', response.token);
-        localStorage.setItem('authToken', response.token);
+
+        localStorage.setItem('token', response.token); 
+
+        this.router.navigate(['/dashboard']); 
       },
-      error:(error)=>{
+      error: (error) => {
         console.error('Login failed:', error);
       }
-    })
-
+    });
   }
-
 }
