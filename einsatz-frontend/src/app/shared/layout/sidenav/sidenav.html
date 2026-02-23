@@ -5,15 +5,29 @@
 
   <div class="menu-title">Menu</div>
 
-  <mat-nav-list>
-    @for (item of menuItems; track item.route) {
+<mat-nav-list>
+  @for (item of menuItems; track item.label) {
+
+    <!-- Normal Route Items -->
+    @if (item.route) {
       <a
         mat-list-item
         [routerLink]="item.route">
         {{ item.label }}
       </a>
     }
-  </mat-nav-list>
+
+    <!-- Logout Item -->
+    @if (item.action === 'logout') {
+      <a
+        mat-list-item
+        (click)="logout()">
+        {{ item.label }}
+      </a>
+    }
+
+  }
+</mat-nav-list>
 
 </mat-sidenav>
 

@@ -34,4 +34,10 @@ export class AuthService{
     login(data:loginRequest):Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/login`,data);
     }
+
+    logout(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+    }
+
 }
