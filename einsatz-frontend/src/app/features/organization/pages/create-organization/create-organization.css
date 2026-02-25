@@ -1,0 +1,73 @@
+.create-org-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 👈 change this */
+  padding: 40px 24px;
+}
+
+/* Main card */
+.create-org-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 45px 35px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  background: #ffffff;
+}
+
+.create-org-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* Header section */
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.card-header p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Form layout */
+.org-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Full width fields */
+mat-form-field {
+  width: 100%;
+}
+
+/* Button styling */
+.create-btn {
+  height: 50px;
+  font-weight: 600;
+  border-radius: 10px;
+  letter-spacing: 0.4px;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+.create-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* Disabled button polish */
+.create-btn:disabled {
+  opacity: 0.7;
+}

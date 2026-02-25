@@ -31,17 +31,18 @@ export class Sidenav {
     { label: 'Dashboard', route: '/dashboard' },
     { label: 'Users', route: '/users' },
     { label: 'Settings', route: '/settings' },
-    {label: 'Logout', action: 'logout'}
+    { label: 'Organization', route: '/organization/create' },
+    { label: 'Logout', action: 'logout' }
   ];
 
-  handleClick(item:any){
-    if(item.action === 'logout'){
+  handleClick(item: any) {
+    if (item.action === 'logout') {
       this.logout();
     }
   }
 
-  logout(){
-  
+  logout() {
+
     this.authService.logout();
     this.router.navigate(['/auth/login'])
   }

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Table(
         name = "organizations",
         indexes = {
-                @Index(name = "idx_org_slug", columnList = "slug")
+                @Index(name = "idx_org_domain", columnList = "domain")
         }
 )
 @Getter
@@ -29,7 +29,7 @@ public class Organization {
     private String name;
 
     @Column(nullable = false, unique = true)
-    private String slug;
+    private String domain;
 
     @Column(nullable = false)
     private Boolean isActive = true;
@@ -39,5 +39,7 @@ public class Organization {
     @UpdateTimestamp
     @Column(nullable = false)
     private Instant updatedAt;
+    @Column(nullable = false)
+    private UUID ownerId;
 
 }

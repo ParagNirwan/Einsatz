@@ -62,7 +62,7 @@ export class Register {
     this.authService.register(registerData as any).subscribe({
       next: (response: any) => {
         console.log('Registration successful:', response);
-        localStorage.setItem('authToken', response.token);
+        localStorage.setItem('token', response.token);
 
         //redirect to dashboard
          this.router.navigate(['/dashboard']); 
