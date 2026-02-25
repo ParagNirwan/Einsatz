@@ -10,3 +10,9 @@
 .content {
   padding: 16px;
 }
+.floating-menu-btn {
+  position: fixed;
+  top: 90%;      /* below toolbar */
+  left: 20px;     /* ALWAYS outside sidenav */
+  z-index: 1000 !important;  /* higher than sidenav */
+}

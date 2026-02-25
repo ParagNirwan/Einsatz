@@ -17,27 +17,65 @@ interface loginRequest{
     email:string;
     password: string;
 }
+interface Organization {
+  id: string;
+  name: string;
+}
+
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  organization?: Organization | null;
+}
+
+
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
+export class AuthService {
 
-export class AuthService{
-    private apiUrl = 'http://localhost:8080/api/auth';
-    
-    constructor(private http: HttpClient){}
+  private apiUrl = 'http://localhost:8080/api/auth';
+  private userApiUrl = 'http://localhost:8080/users';
 
-    register(data: RegisterRequest): Observable<AuthResponse>{
-        return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data);
-    }
+  private currentUser: User | null = null;
 
-    login(data:loginRequest):Observable<AuthResponse>{
-        return this.http.post<AuthResponse>(`${this.apiUrl}/login`,data);
-    }
+  constructor(private http: HttpClient) {}
 
-    logout(){
-        localStorage.removeItem('token');
-        localStorage.removeItem('role');
-    }
+  register(data: RegisterRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data);
+  }
 
+  login(data: loginRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.currentUser = null;
+  }
+
+  //  NEW — Load user from /me
+  loadUser(): Observable<User> {
+    return this.http.get<User>(`${this.userApiUrl}/me`);
+  }
+
+  setUser(user: User) {
+    this.currentUser = user;
+  }
+
+  getUser(): User | null {
+    return this.currentUser;
+  }
+
+  getOrganization() {
+    return this.currentUser?.organization ?? null;
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

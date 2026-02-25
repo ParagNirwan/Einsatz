@@ -1,4 +1,4 @@
-package com.einsatz.einsatz_backend.config;
+package com.einsatz.einsatz_backend.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

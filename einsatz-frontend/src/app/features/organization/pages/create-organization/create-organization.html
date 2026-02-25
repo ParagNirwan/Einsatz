@@ -1,0 +1,51 @@
+<div class="create-org-wrapper">
+
+  <mat-card class="create-org-card">
+
+    <div class="card-header">
+      <h2>Create Organization</h2>
+      <p>You are not part of any organization yet.</p>
+    </div>
+
+    <form [formGroup]="createOrgForm"
+          (ngSubmit)="onSubmit()"
+          class="org-form">
+
+      <!-- Organization Name -->
+      <mat-form-field appearance="outline">
+        <mat-label>Organization Name</mat-label>
+        <input matInput formControlName="name" placeholder="Einsatz GmbH" />
+        @if(createOrgForm.controls.name.touched && createOrgForm.controls.name.invalid){
+          <mat-error>Organization name is required.</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Organization Domain -->
+      <mat-form-field appearance="outline">
+        <mat-label>Organization Domain</mat-label>
+        <input matInput formControlName="domain" placeholder="einsatz.com" />
+        @if(createOrgForm.controls.domain.touched && createOrgForm.controls.domain.invalid){
+          <mat-error>Organization domain is required.</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Organization Owner -->
+      <mat-form-field appearance="outline">
+        <mat-label>Organization Owner</mat-label>
+        <input matInput formControlName="orgOwner" />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="create-btn"
+        [disabled]="createOrgForm.invalid">
+        Create Organization
+      </button>
+
+    </form>
+
+  </mat-card>
+
+</div>

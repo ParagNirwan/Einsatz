@@ -1,4 +1,4 @@
-package com.einsatz.einsatz_backend.config;
+package com.einsatz.einsatz_backend.security;
 
 import com.einsatz.einsatz_backend.service.JwtService;
 import jakarta.servlet.FilterChain;
