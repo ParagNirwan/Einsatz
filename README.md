@@ -1,6 +1,6 @@
 # Einsatz
 
-Einsatz is an incident-tracking web application with an Angular frontend and a Spring Boot REST API. The repository includes a Docker Compose setup for running the frontend, backend, and PostgreSQL database together.
+Einsatz is an incident-tracking application in development, with an Angular frontend and a Spring Boot REST API. The current source includes JWT authentication and user/organization management, plus a dashboard UI. The repository includes Docker Compose for running the frontend, backend, and PostgreSQL database together.
 
 ## Tech stack
 
@@ -23,6 +23,10 @@ Einsatz is an incident-tracking web application with an Angular frontend and a S
 4. Open the frontend at [http://localhost:4200](http://localhost:4200). The backend is exposed on port `8080`; PostgreSQL uses port `5432`.
 
 Do not commit your `.env` file or real credentials. The Compose configuration is intended for local development; review database migration, secrets, and deployment settings before using it in production.
+
+## Current scope
+
+The checked-in backend currently centers on authentication and organization/user management. Treat incident-specific workflows as work in progress unless implemented elsewhere in the repository.
 
 ## Repository layout
 
